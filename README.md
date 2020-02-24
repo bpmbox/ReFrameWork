@@ -48,3 +48,4 @@
 2. Implement OpenApp and CloseApp workflows, linking them in the Config.xlsx fields
 3. Implement GetTransactionData and SetTransactionStatus or use ./Framework versions for Orchestrator queues
 4. Implement ProcessTransaction workflow and any invoked others
+=CELL("col",INDIRECT(A1&"1"))
