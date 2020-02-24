@@ -29,7 +29,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1397.6,2208</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1397.6,2246.4</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>core転地_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="28">
@@ -99,7 +99,7 @@
       <x:Boolean x:Key="ShouldCollapseAll">False</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence sap:VirtualizedContainerService.HintSize="1377.6,2148" sap2010:WorkflowViewState.IdRef="Sequence_8">
+  <Sequence sap:VirtualizedContainerService.HintSize="1377.6,2186.4" sap2010:WorkflowViewState.IdRef="Sequence_8">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="登録データ" />
       <Variable x:TypeArguments="x:String" Name="log" />
@@ -116,14 +116,14 @@
         <x:Boolean x:Key="IsPinned">False</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1336,2055.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1336,2093.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="DATACONVERT" sap:VirtualizedContainerService.HintSize="1299.2,1616" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="DATACONVERT" sap:VirtualizedContainerService.HintSize="1299.2,1654.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="sd:DataTable" Name="MAP" />
             <Variable x:TypeArguments="sd:DataTable" sap2010:Annotation.AnnotationText="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" Name="input" />
@@ -136,7 +136,7 @@
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Flowchart sap:VirtualizedContainerService.HintSize="1257.6,1523.2" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+          <Flowchart sap:VirtualizedContainerService.HintSize="1257.6,1561.6" sap2010:WorkflowViewState.IdRef="Flowchart_1">
             <Flowchart.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="files" />
               <Variable x:TypeArguments="ss:SecureString" Name="user" />
@@ -153,7 +153,7 @@
                 <av:Point x:Key="ShapeLocation">320,0</av:Point>
                 <av:Size x:Key="ShapeSize">60,75.2</av:Size>
                 <av:PointCollection x:Key="ConnectorLocation">350,75.2 350,108.8</av:PointCollection>
-                <x:Double x:Key="Height">1486</x:Double>
+                <x:Double x:Key="Height">1524.8000000000002</x:Double>
                 <x:Double x:Key="Width">1224</x:Double>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -164,11 +164,11 @@
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">250,334.8</av:Point>
-                  <av:Size x:Key="ShapeSize">200,216</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">350,550.8 350,594</av:PointCollection>
+                  <av:Size x:Key="ShapeSize">200,337.6</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">350,672.4 350,704</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="実行用データの初期化&#xD;&#xA;&#xD;&#xA;テンプレート設定（固定なのでフレームワークの設定から取得）&#xA;&#xA;登録データ&#xA;出力データ&#xA;マップデータ&#xA;文字変換データ" DisplayName="初期化処理 Sequence" sap:VirtualizedContainerService.HintSize="200,216" sap2010:WorkflowViewState.IdRef="Sequence_43">
+              <Sequence sap2010:Annotation.AnnotationText="実行用データの初期化&#xD;&#xA;&#xD;&#xA;テンプレート設定（固定10 なのでフレームワークの設定から取得）&#xD;&#xA;&#xD;&#xA;判定条件１０　明細か明細へ転記　（追加、更新）&#xD;&#xA;判定条件３　　 明細から単票へ転記&#xD;&#xA;判定条件１　　 単票から明細へ転記追加、更新）&#xA;&#xA;登録データ&#xA;出力データ&#xA;マップデータ&#xA;文字変換データ" DisplayName="初期化処理 Sequence" sap:VirtualizedContainerService.HintSize="200,337.6" sap2010:WorkflowViewState.IdRef="Sequence_43">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -588,16 +588,17 @@
                 <FlowStep x:Name="__ReferenceID6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:Point x:Key="ShapeLocation">250,594</av:Point>
-                      <av:Size x:Key="ShapeSize">200,52</av:Size>
-                      <av:PointCollection x:Key="ConnectorLocation">350,646 350,686.4</av:PointCollection>
+                      <av:Point x:Key="ShapeLocation">250,704</av:Point>
+                      <av:Size x:Key="ShapeSize">200,83.2</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">350,787.2 350,816.4</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:PathExists DisplayName="ファイルが在るか確認 Path Exists" Exists="[files]" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[入力ファイル]" PathType="File">
+                  <ui:PathExists sap2010:Annotation.AnnotationText="入力ファイル存在チェック" DisplayName="ファイルが在るか確認 Path Exists" Exists="[files]" sap:VirtualizedContainerService.HintSize="200,83.2" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[入力ファイル]" PathType="File">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:PathExists>
@@ -606,10 +607,10 @@
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                          <av:Point x:Key="ShapeLocation">270,686.4</av:Point>
+                          <av:Point x:Key="ShapeLocation">270,816.4</av:Point>
                           <av:Size x:Key="ShapeSize">160,87.2</av:Size>
-                          <av:PointCollection x:Key="TrueConnector">270,730 240.4,730 240.4,786.4 360.4,786.4 360.4,816.4</av:PointCollection>
-                          <av:PointCollection x:Key="FalseConnector">430,730 550,730 550,709</av:PointCollection>
+                          <av:PointCollection x:Key="TrueConnector">270,860 240,860 240,916.4 360,916.4 360,946.4</av:PointCollection>
+                          <av:PointCollection x:Key="FalseConnector">430,860 550,860 550,839</av:PointCollection>
                           <x:String x:Key="TrueLabel">在る場合</x:String>
                           <x:String x:Key="FalseLabel">無い場合</x:String>
                         </scg:Dictionary>
@@ -620,9 +621,9 @@
                             <FlowStep x:Name="__ReferenceID4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <av:Point x:Key="ShapeLocation">0,1016.4</av:Point>
+                                  <av:Point x:Key="ShapeLocation">0,1146.4</av:Point>
                                   <av:Size x:Key="ShapeSize">200,337.6</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">100,1354 100,1375.6 230,1375.6 230,1345.6 260,1345.6</av:PointCollection>
+                                  <av:PointCollection x:Key="ConnectorLocation">100,1484.8 100,1505.6 230,1505.6 230,1475.6 260,1475.6</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <Sequence sap2010:Annotation.AnnotationText="明細から明細へ登録&#xA;テンプレート項目 判定条件 10&#xD;&#xA;&#xD;&#xA;入力シート　1列目を連番キーとする&#xD;&#xA;&#xA;ＩＤがある場合は更新&#xA;ＩＤがない場合は登録&#xD;&#xA;処理前に登録シートを別シートにコピー&#xD;&#xA;＊）二重登録防止　ファイルが削除されてなく実行の場合でも再度登録をされない様に設定&#xD;&#xA;&#xD;&#xA;*)マクロが登録されている部分は変換テーブルで書き換え&#xA;" DisplayName="T001_データの転記 マップ１ Sequence" sap:VirtualizedContainerService.HintSize="200,337.6" sap2010:WorkflowViewState.IdRef="Sequence_90">
@@ -1383,19 +1384,19 @@
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                              <av:Point x:Key="ShapeLocation">322.4,816.4</av:Point>
+                              <av:Point x:Key="ShapeLocation">322.4,946.4</av:Point>
                               <av:Size x:Key="ShapeSize">76,87.2</av:Size>
-                              <av:PointCollection x:Key="Default">322.4,838.2 100,838.2 100,1016.4</av:PointCollection>
-                              <av:PointCollection x:Key="1Connector">397.6,860 640,860 640,1017.6</av:PointCollection>
-                              <av:PointCollection x:Key="3Connector">360.4,903.6 360.4,933.6 360,933.6 360,1017.6</av:PointCollection>
+                              <av:PointCollection x:Key="Default">322.4,968.2 100,968.2 100,1146.4</av:PointCollection>
+                              <av:PointCollection x:Key="1Connector">397.6,990 640,990 640,1147.6</av:PointCollection>
+                              <av:PointCollection x:Key="3Connector">360,1033.6 360,1147.6</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
                           <FlowStep x:Key="3" x:Name="__ReferenceID8">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:Point x:Key="ShapeLocation">260,1017.6</av:Point>
+                                <av:Point x:Key="ShapeLocation">260,1147.6</av:Point>
                                 <av:Size x:Key="ShapeSize">200,185.6</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">360,1203.2 360,1296.4</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">360,1333.2 360,1426.4</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <Sequence sap2010:Annotation.AnnotationText="明細から単票へ登録&#xA;テンプレート項目  判定条件 3&#xD;&#xA;&#xD;&#xA;転記シートＩＤの明細内容を登録&#xA;&#xA;" DisplayName="T002_データの転記 マップ Sequence" sap:VirtualizedContainerService.HintSize="200,185.6" sap2010:WorkflowViewState.IdRef="Sequence_135">
@@ -1743,7 +1744,7 @@
                               <FlowStep x:Name="__ReferenceID0">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">260,1296.4</av:Point>
+                                    <av:Point x:Key="ShapeLocation">260,1426.4</av:Point>
                                     <av:Size x:Key="ShapeSize">200,98.4</av:Size>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -1761,9 +1762,9 @@
                           <FlowStep x:Key="1" x:Name="__ReferenceID9">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:Point x:Key="ShapeLocation">540,1017.6</av:Point>
+                                <av:Point x:Key="ShapeLocation">540,1147.6</av:Point>
                                 <av:Size x:Key="ShapeSize">200,185.6</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">640,1203.2 640,1345.6 460,1345.6</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">640,1333.2 640,1475.6 460,1475.6</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <Sequence sap2010:Annotation.AnnotationText="単票から明細へ登録&#xA;テンプレート項目 判定条件１&#xD;&#xA;&#xD;&#xA;転記シートＩＤの明細に更新&#xA;*)ＩＤがない場合追加登録の設定&#xA;" DisplayName="T003_データの転記 マップ Sequence" sap:VirtualizedContainerService.HintSize="200,185.6" sap2010:WorkflowViewState.IdRef="Sequence_148">
@@ -1773,7 +1774,7 @@
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="908,3257.6" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="908,3703.2" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1781,7 +1782,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <Sequence DisplayName="シートに転記をして追加 Sequence" sap:VirtualizedContainerService.HintSize="871.2,2818.4" sap2010:WorkflowViewState.IdRef="Sequence_147">
+                                  <Sequence DisplayName="シートに転記をして追加 Sequence" sap:VirtualizedContainerService.HintSize="871.2,3264" sap2010:WorkflowViewState.IdRef="Sequence_147">
                                     <Sequence.Variables>
                                       <Variable x:TypeArguments="sd:DataTable" Name="コピー先データテーブル" />
                                       <Variable x:TypeArguments="ui:GenericValue" Name="i" />
@@ -1823,6 +1824,27 @@
                                         <InArgument x:TypeArguments="sd:DataTable">[コピー先データ]</InArgument>
                                       </Assign.Value>
                                     </Assign>
+                                    <If Condition="[転記シートID = &quot;&quot;]" sap:VirtualizedContainerService.HintSize="829.6,405.6" sap2010:WorkflowViewState.IdRef="If_11">
+                                      <If.Then>
+                                        <Sequence sap2010:Annotation.AnnotationText="転記シートの対応ＩＤが空の場合は登録処理用にレコードを追加" DisplayName="追加登録の場合 Sequence" sap:VirtualizedContainerService.HintSize="305.6,257.6" sap2010:WorkflowViewState.IdRef="Sequence_155">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{}]" DataTable="[コピー先データテーブル]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="264,22.4" sap2010:WorkflowViewState.IdRef="AddDataRow_3" />
+                                          <Assign sap:VirtualizedContainerService.HintSize="264,60" sap2010:WorkflowViewState.IdRef="Assign_113">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="x:String">[転記シートID]</OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="x:String">[コピー先データテーブル.Rows.Count.ToString]</InArgument>
+                                            </Assign.Value>
+                                          </Assign>
+                                        </Sequence>
+                                      </If.Then>
+                                    </If>
                                     <Sequence DisplayName="登録　更新処理 Sequence" sap:VirtualizedContainerService.HintSize="829.6,1776" sap2010:WorkflowViewState.IdRef="Sequence_140">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:Int32" Name="検索したセル列の番号" />
@@ -2090,7 +2112,7 @@
                         <FlowStep x:Name="__ReferenceID7">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <av:Point x:Key="ShapeLocation">450,709</av:Point>
+                              <av:Point x:Key="ShapeLocation">450,839</av:Point>
                               <av:Size x:Key="ShapeSize">200,22.4</av:Size>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
