@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="controller転記シートに登録" this:controller転記シートに登録.転記シートID="12" this:controller転記シートに登録.テンプレートファイル="Input\Book1.xlsx" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Diagnostics;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="controller転記シートに登録" this:controller転記シートに登録.転記シートID="12" this:controller転記シートに登録.テンプレートファイル="Input\Book1.xlsx" this:controller転記シートに登録.dic="[New Dictionary(Of String,String)]" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:sd1="clr-namespace:System.Diagnostics;assembly=System" xmlns:ss="clr-namespace:System.Security;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="判定条件" Type="InArgument(x:Int32)" />
     <x:Property Name="転記シートID" Type="InArgument(x:String)" />
@@ -16,6 +16,8 @@
     <x:Property Name="変換シート" Type="InArgument(x:String)" />
     <x:Property Name="変換ファイル" Type="InArgument(x:String)" />
     <x:Property Name="テンプレートファイル" Type="InArgument(x:String)" />
+    <x:Property Name="テンプレートシート" Type="InArgument(x:String)" />
+    <x:Property Name="dic" Type="InArgument(scg:Dictionary(x:String, x:String))" />
   </x:Members>
   <this:controller転記シートに登録.転記シートIID>
     <InArgument x:TypeArguments="x:String">
@@ -104,7 +106,6 @@
       <Variable x:TypeArguments="sd:DataTable" Name="変換テーブル" />
       <Variable x:TypeArguments="ui:GenericValue" Name="判定条件" />
       <Variable x:TypeArguments="ui:GenericValue" Name="明細位置" />
-      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dic" />
       <Variable x:TypeArguments="x:Int32" Default="0" Name="コピーするエクセルの列" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -155,9 +156,9 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <Flowchart.StartNode>
-              <x:Reference>__ReferenceID12</x:Reference>
+              <x:Reference>__ReferenceID10</x:Reference>
             </Flowchart.StartNode>
-            <FlowStep x:Name="__ReferenceID4">
+            <FlowStep x:Name="__ReferenceID3">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">250,294.8</av:Point>
@@ -165,7 +166,7 @@
                   <av:PointCollection x:Key="ConnectorLocation">350,465.2 350,524</av:PointCollection>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="下記を初期化する&#xD;&#xA;&#xD;&#xA;登録データ&#xD;&#xA;出力データ&#xD;&#xA;マップデータ&#xD;&#xA;文字変換データ" DisplayName="初期化処理 Sequence" sap:VirtualizedContainerService.HintSize="600,4776.8" sap2010:WorkflowViewState.IdRef="Sequence_43">
+              <Sequence sap2010:Annotation.AnnotationText="下記を初期化する&#xD;&#xA;&#xD;&#xA;登録データ&#xD;&#xA;出力データ&#xD;&#xA;マップデータ&#xD;&#xA;文字変換データ" DisplayName="初期化処理 Sequence" sap:VirtualizedContainerService.HintSize="200,170.4" sap2010:WorkflowViewState.IdRef="Sequence_43">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -173,40 +174,56 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="558.4,231.2" sap2010:WorkflowViewState.IdRef="CommentOut_48">
+                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="558.4,52" sap2010:WorkflowViewState.IdRef="CommentOut_49">
                   <ui:CommentOut.Body>
-                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="305.6,152.8" sap2010:WorkflowViewState.IdRef="Sequence_149">
+                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="305.6,152.8" sap2010:WorkflowViewState.IdRef="Sequence_150">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Assign sap:VirtualizedContainerService.HintSize="264,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+                      <Assign sap:VirtualizedContainerService.HintSize="264,60" sap2010:WorkflowViewState.IdRef="Assign_13">
                         <Assign.To>
-                          <OutArgument x:TypeArguments="ui:GenericValue">[判定条件]</OutArgument>
+                          <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dic]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="ui:GenericValue">[10]</InArgument>
+                          <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String,String)]</InArgument>
                         </Assign.Value>
                       </Assign>
                     </Sequence>
                   </ui:CommentOut.Body>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
-                <Assign sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_13">
-                  <Assign.To>
-                    <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dic]</OutArgument>
-                  </Assign.To>
-                  <Assign.Value>
-                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[New Dictionary(Of String,String)]</InArgument>
-                  </Assign.Value>
-                </Assign>
-                <Assign sap:VirtualizedContainerService.HintSize="558.4,60" sap2010:WorkflowViewState.IdRef="Assign_72">
+                <Assign sap2010:Annotation.AnnotationText="フレームワークの設定値から読み込み&#xD;&#xA;dic(&quot;テンプレートファイル&quot;)" sap:VirtualizedContainerService.HintSize="558.4,102.4" sap2010:WorkflowViewState.IdRef="Assign_72">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:String">[テンプレートファイル]</OutArgument>
                   </Assign.To>
                   <Assign.Value>
-                    <InArgument x:TypeArguments="x:String">Input\Book1.xlsx</InArgument>
+                    <InArgument x:TypeArguments="x:String">["Input\テンプレート.xlsx"]</InArgument>
                   </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Assign>
+                <Assign sap2010:Annotation.AnnotationText="パラメーターファイルによって動作の切り替え&#xD;&#xA;パラメーター１　明細から迷彩&#xD;&#xA;パラメーター２　単票から明細&#xD;&#xA;パラメーター３　明細から単票" sap:VirtualizedContainerService.HintSize="558.4,132.8" sap2010:WorkflowViewState.IdRef="Assign_109">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[テンプレートシート]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">パラメーター2</InArgument>
+                  </Assign.Value>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
                 </Assign>
                 <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="MAPの値を読んでデータテーブルに展開する&#xA;読み込む　場所の設定をする&#xA;余計な項目がある為&#xA;入力　&quot;C:\Users\USER\Documents\Book1.xlsx&quot;&#xA;出力　MAP {DataTable}&#xA;&#xA;ディクショナリーから読み込む" DisplayName="テンプレート初期化 DictionNaryの値を読み込む（Excel Application Scope）" sap:VirtualizedContainerService.HintSize="558.4,795.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_11" Visible="False" WorkbookPath="[テンプレートファイル]">
                   <ui:ExcelApplicationScope.Body>
@@ -224,7 +241,7 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ExcelReadRange AddHeaders="False" sap2010:Annotation.AnnotationText="固定値&#xA;Output　DtParam" DataTable="[マッピングデータ]" DisplayName="マップデータの読み込み(Read Range)" sap:VirtualizedContainerService.HintSize="355.2,102.4" sap2010:WorkflowViewState.IdRef="ExcelReadRange_9" Range="A1" SheetName="パラメーター">
+                        <ui:ExcelReadRange AddHeaders="False" sap2010:Annotation.AnnotationText="固定値&#xA;Output　DtParam" DataTable="[マッピングデータ]" DisplayName="マップデータの読み込み(Read Range)" sap:VirtualizedContainerService.HintSize="355.2,102.4" sap2010:WorkflowViewState.IdRef="ExcelReadRange_9" Range="A1" SheetName="[テンプレートシート]">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -537,7 +554,7 @@
                 </ui:ExcelApplicationScope>
               </Sequence>
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID8">
+                <FlowStep x:Name="__ReferenceID6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">250,524</av:Point>
@@ -554,7 +571,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:PathExists>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID2" Condition="[files]" DisplayName="入力ファイルがあるか確認 Flow Decision" sap:VirtualizedContainerService.HintSize="160,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                    <FlowDecision x:Name="__ReferenceID1" Condition="[files]" DisplayName="入力ファイルがあるか確認 Flow Decision" sap:VirtualizedContainerService.HintSize="160,87.2" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -567,17 +584,17 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                       <FlowDecision.True>
-                        <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID3" DisplayName="Flow Switch" Expression="[判定条件]" sap:VirtualizedContainerService.HintSize="75.2,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_3">
+                        <FlowSwitch x:TypeArguments="x:Int32" x:Name="__ReferenceID2" DisplayName="Flow Switch" Expression="[判定条件]" sap:VirtualizedContainerService.HintSize="75.2,87.2" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_3">
                           <FlowSwitch.Default>
-                            <FlowStep x:Name="__ReferenceID5">
+                            <FlowStep x:Name="__ReferenceID4">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <av:Point x:Key="ShapeLocation">0,1016.4</av:Point>
-                                  <av:Size x:Key="ShapeSize">200,124.8</av:Size>
-                                  <av:PointCollection x:Key="ConnectorLocation">100,1141.2 100,1330 260,1330</av:PointCollection>
+                                  <av:Size x:Key="ShapeSize">200,155.2</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">100,1171.6 100,1330 260,1330</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence sap2010:Annotation.AnnotationText="ＩＤがある場合は更新&#xD;&#xA;ＩＤがない場合は登録&#xD;&#xA;" DisplayName="T001_データの転記 マップ１ Sequence" sap:VirtualizedContainerService.HintSize="200,124.8" sap2010:WorkflowViewState.IdRef="Sequence_90">
+                              <Sequence sap2010:Annotation.AnnotationText="明細から明細へ登録&#xD;&#xA;入力タイプ 10&#xD;&#xA;ＩＤがある場合は更新&#xD;&#xA;ＩＤがない場合は登録&#xD;&#xA;" DisplayName="T001_データの転記 マップ１ Sequence" sap:VirtualizedContainerService.HintSize="200,155.2" sap2010:WorkflowViewState.IdRef="Sequence_90">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1224,7 +1241,7 @@
                                           </ActivityAction>
                                         </ui:ForEachRow.Body>
                                       </ui:ForEachRow>
-                                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[コピー先データテーブル]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="1040,52" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
+                                      <ui:ForEachRow CurrentIndex="{x:Null}" DataTable="[コピー先データテーブル]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="355.2,300.8" sap2010:WorkflowViewState.IdRef="ForEachRow_8">
                                         <ui:ForEachRow.Body>
                                           <ActivityAction x:TypeArguments="sd:DataRow">
                                             <ActivityAction.Argument>
@@ -1338,543 +1355,19 @@
                               <av:Point x:Key="ShapeLocation">322.4,816.4</av:Point>
                               <av:Size x:Key="ShapeSize">75.2,87.2</av:Size>
                               <av:PointCollection x:Key="Default">322.4,838.2 100,838.2 100,1016.4</av:PointCollection>
-                              <av:PointCollection x:Key="1Connector">397.6,860 600,860 600,1017.6</av:PointCollection>
-                              <av:PointCollection x:Key="2Connector">397.6,838.2 1100,838.2 1100,1010.8</av:PointCollection>
+                              <av:PointCollection x:Key="1Connector">397.6,860 640,860 640,1017.6</av:PointCollection>
                               <av:PointCollection x:Key="3Connector">360,903.6 360,1017.6</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <FlowStep x:Key="2" x:Name="__ReferenceID1">
-                            <sap:WorkflowViewStateService.ViewState>
-                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:Point x:Key="ShapeLocation">1000,1010.8</av:Point>
-                                <av:Size x:Key="ShapeSize">200,98.4</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">1100,1109.2 1100,1139.2 1110,1139.2 1110,1180.8</av:PointCollection>
-                              </scg:Dictionary>
-                            </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="マップシート４" DisplayName="T005_IDを元に単票から転記データへ登録処理(Sequence)" sap:VirtualizedContainerService.HintSize="200,98.4" sap2010:WorkflowViewState.IdRef="Sequence_44">
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="入力テーブル　input&#xA;出力テーブル  output&#xA;出力テーブルに　登録用の空のレコードを一行追加をする&#xA;追加したテーブルの行番号を取得する&#xA;&#xA;*)dataTableとシート名を合わせる" DisplayName="登録用のデータを追加する(Excel Application Scope)" sap:VirtualizedContainerService.HintSize="732,766.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_2" Visible="False" WorkbookPath="C:\Users\USER\Documents\Book1.xlsx">
-                                <ui:ExcelApplicationScope.Body>
-                                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                    <ActivityAction.Argument>
-                                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                    </ActivityAction.Argument>
-                                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,553.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <Sequence DisplayName="データテーブルへの読み込み（Do）" sap:VirtualizedContainerService.HintSize="375.2,152.8" sap2010:WorkflowViewState.IdRef="Sequence_33">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ui:ExcelReadRange AddHeaders="False" DataTable="[コピー先データ]" DisplayName="マップデータの読み込み(Read Range)" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_7" SheetName="[dic(&quot;出力シート&quot;)]">
-                                          <ui:ExcelReadRange.Range>
-                                            <InArgument x:TypeArguments="x:String">
-                                              <Literal x:TypeArguments="x:String" Value="" />
-                                            </InArgument>
-                                          </ui:ExcelReadRange.Range>
-                                        </ui:ExcelReadRange>
-                                      </Sequence>
-                                      <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Activity AddDataTable&#xA;IN {}&#xA;OUT output&#xA;票のデータを入れる為のデータを追加" ArrayRow="[{}]" DataTable="[コピー先データ]" DisplayName="空のデータを一行設定　Add Data Row" sap:VirtualizedContainerService.HintSize="375.2,110.4" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:AddDataRow>
-                                      <Assign sap2010:Annotation.AnnotationText="IN output.rows.Count-1(レコード設定の場合　0からの為）&#xA;OUT col" DisplayName="現在のカウントを設定 Assign" sap:VirtualizedContainerService.HintSize="375.2,117.6" sap2010:WorkflowViewState.IdRef="Assign_2">
-                                        <Assign.To>
-                                          <OutArgument x:TypeArguments="x:Int32">[col]</OutArgument>
-                                        </Assign.To>
-                                        <Assign.Value>
-                                          <InArgument x:TypeArguments="x:Int32">[コピー先データ.rows.Count-1]</InArgument>
-                                        </Assign.Value>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </Assign>
-                                    </Sequence>
-                                  </ActivityAction>
-                                </ui:ExcelApplicationScope.Body>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </ui:ExcelApplicationScope>
-                              <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="明細へ出力をする&#xA;&#xA;追加したレコードに　MAP定義の一行目の項目を&#xA;MAPに行目の項目に登録&#xA;例　A1(row(0)の値を　追加レコードの3番目(row(1))&#xA;&#xA;注意）Cint　にしないと登録時にエラーがでる&#xA;&#xA;IN  MAP マッピングテーブルを一行ずつ処理&#xA;IN　単票のデータ（エクセルからの取得）&#xA;OUT　明細のデータ　DataTable&#xA;&#xA;変換シートを元に文字を入れ替える&#xA;&#xA;出来たら目的のシートに登録&#xA;＊）キーを元にソートをする（必要であれば）&#xA;&#xA;IN　単票 エクセルファイル　flameworkのpDictionaryから取得する" DisplayName="明細へ出力をする Excel Application Scope" sap:VirtualizedContainerService.HintSize="732,2450.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" WorkbookPath="[入力ファイル]">
-                                <ui:ExcelApplicationScope.Body>
-                                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                    <ActivityAction.Argument>
-                                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                    </ActivityAction.Argument>
-                                    <Sequence DisplayName="単票データ取得開始 Sequence" sap:VirtualizedContainerService.HintSize="698.4,2054.4" sap2010:WorkflowViewState.IdRef="Sequence_30">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                      <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="追加したレコードに　単票のデータを追加していく&#xA;IN　MAP{datatable}&#xA;OUT row{datarow}" DataTable="[MAP]" DisplayName="MAP分だけ処理(For Each Row)" sap:VirtualizedContainerService.HintSize="656.8,1542.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-                                        <ui:ForEachRow.Body>
-                                          <ActivityAction x:TypeArguments="sd:DataRow">
-                                            <ActivityAction.Argument>
-                                              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                                            </ActivityAction.Argument>
-                                            <Sequence DisplayName="項目MAP処理 Sequence" sap:VirtualizedContainerService.HintSize="607.2,1336.8" sap2010:WorkflowViewState.IdRef="Sequence_34">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="565.6,1244" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                                                <Sequence.Variables>
-                                                  <Variable x:TypeArguments="sd:DataTable" Name="CHANGE" />
-                                                </Sequence.Variables>
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                                <ui:ExcelReadCell sap2010:Annotation.AnnotationText="Excelからデータ取得　マップデータの内容でデータの取得&#xA;&#xA;IN Sheet1 取得するシート&#xA;IN row(0).ToString セルの値(A1など）&#xA;OUT val 単票のエクセルのデータ " Cell="[row(0).ToString]" DisplayName="登録データ取得 Read Cell" sap:VirtualizedContainerService.HintSize="524,148" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" PreserveFormat="True" SheetName="[入力ファイル]">
-                                                  <ui:ExcelReadCell.Result>
-                                                    <OutArgument x:TypeArguments="x:String">[登録データ]</OutArgument>
-                                                  </ui:ExcelReadCell.Result>
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                </ui:ExcelReadCell>
-                                                <ui:FilterDataTable sap2010:Annotation.AnnotationText="変換元から　変換先へのフィルター" DataTable="[変換テーブル]" DisplayName="文字比較 Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="524,91.2" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[CHANGE]" SelectColumnsMode="Keep">
-                                                  <ui:FilterDataTable.Filters>
-                                                    <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                                      <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
-                                                        <ui:FilterOperationArgument.Column>
-                                                          <InArgument x:TypeArguments="x:String">["Column0"]</InArgument>
-                                                        </ui:FilterOperationArgument.Column>
-                                                        <ui:FilterOperationArgument.Operand>
-                                                          <InArgument x:TypeArguments="x:String">[登録データ]</InArgument>
-                                                        </ui:FilterOperationArgument.Operand>
-                                                      </ui:FilterOperationArgument>
-                                                    </scg:List>
-                                                  </ui:FilterDataTable.Filters>
-                                                  <ui:FilterDataTable.SelectColumns>
-                                                    <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                                      <x:Null />
-                                                    </scg:List>
-                                                  </ui:FilterDataTable.SelectColumns>
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                </ui:FilterDataTable>
-                                                <If sap2010:Annotation.AnnotationText="検索にヒットした場合件数は０以上になる" Condition="[CHANGE.Rows.Count &gt; 0]" DisplayName="検索にヒットした場合(If)" sap:VirtualizedContainerService.HintSize="524,463.2" sap2010:WorkflowViewState.IdRef="If_2">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                  <If.Then>
-                                                    <Sequence DisplayName="データを入れ替える Sequence" sap:VirtualizedContainerService.HintSize="375.2,284" sap2010:WorkflowViewState.IdRef="Sequence_42">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" sap2010:Annotation.AnnotationText="登録したテーブルの確認" Buttons="Ok" DisplayName="文字比較　Message Box" sap:VirtualizedContainerService.HintSize="333.6,91.2" sap2010:WorkflowViewState.IdRef="MessageBox_14" Text="[CHANGE(0)(1).ToString]" TopMost="True">
-                                                        <sap:WorkflowViewStateService.ViewState>
-                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                          </scg:Dictionary>
-                                                        </sap:WorkflowViewStateService.ViewState>
-                                                      </ui:MessageBox>
-                                                      <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_7">
-                                                        <Assign.To>
-                                                          <OutArgument x:TypeArguments="x:String">[登録データ]</OutArgument>
-                                                        </Assign.To>
-                                                        <Assign.Value>
-                                                          <InArgument x:TypeArguments="x:String">[CHANGE(0)(1).ToString]</InArgument>
-                                                        </Assign.Value>
-                                                      </Assign>
-                                                    </Sequence>
-                                                  </If.Then>
-                                                </If>
-                                                <Assign sap2010:Annotation.AnnotationText="最終行の　設定先へ値を保存&#xA;IN val エクセルから取得した値&#xA;OUT input(col)(Cint(row(1)-1))&#xA;&#xA;データテーブルの保存先　&#xA;&#xA;注）Cint で数値にしないとエラー" DisplayName="明細データの設定 Assign" sap:VirtualizedContainerService.HintSize="524,178.4" sap2010:WorkflowViewState.IdRef="Assign_1">
-                                                  <Assign.To>
-                                                    <OutArgument x:TypeArguments="x:Object">[コピー先データ(col)(Cint(row(1))-1)]</OutArgument>
-                                                  </Assign.To>
-                                                  <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:Object">[登録データ]</InArgument>
-                                                  </Assign.Value>
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                </Assign>
-                                                <ui:OutputDataTable sap2010:Annotation.AnnotationText="ログで確認するために Output Data Tableで文字列で保存&#xA;&#xA;IN input&#xA;OUT　Log" DataTable="[コピー先データ]" DisplayName="LOGデータ出力 Output Data Table" sap:VirtualizedContainerService.HintSize="524,110.4" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[log]">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                </ui:OutputDataTable>
-                                              </Sequence>
-                                            </Sequence>
-                                          </ActivityAction>
-                                        </ui:ForEachRow.Body>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:ForEachRow>
-                                      <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="設定したテーブルを一括して保存" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="656.8,379.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" Visible="False" WorkbookPath="[出力ファイル]">
-                                        <ui:ExcelApplicationScope.Body>
-                                          <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                            <ActivityAction.Argument>
-                                              <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                            </ActivityAction.Argument>
-                                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,238.4" sap2010:WorkflowViewState.IdRef="Sequence_7">
-                                              <sap:WorkflowViewStateService.ViewState>
-                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                </scg:Dictionary>
-                                              </sap:WorkflowViewStateService.ViewState>
-                                              <ui:ExcelWriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="明細に値の設定&#xA;IN output&#xA;OUT Sheet2" DataTable="[コピー先データ]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,145.6" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[出力シート]" StartingCell="[dic(&quot;出力シート位置&quot;)]">
-                                                <sap:WorkflowViewStateService.ViewState>
-                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                  </scg:Dictionary>
-                                                </sap:WorkflowViewStateService.ViewState>
-                                              </ui:ExcelWriteRange>
-                                            </Sequence>
-                                          </ActivityAction>
-                                        </ui:ExcelApplicationScope.Body>
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                      </ui:ExcelApplicationScope>
-                                    </Sequence>
-                                  </ActivityAction>
-                                </ui:ExcelApplicationScope.Body>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </ui:ExcelApplicationScope>
-                            </Sequence>
-                            <FlowStep.Next>
-                              <FlowStep x:Name="__ReferenceID6">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <av:Point x:Key="ShapeLocation">1010,1180.8</av:Point>
-                                    <av:Size x:Key="ShapeSize">200,98.4</av:Size>
-                                    <av:PointCollection x:Key="ConnectorLocation">1110,1279.2 1110,1330 460,1330</av:PointCollection>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <Sequence sap2010:Annotation.AnnotationText="マップシート４" DisplayName="T005_IDを元に単票から転記データへ登録処理(Sequence)" sap:VirtualizedContainerService.HintSize="200,98.4" sap2010:WorkflowViewState.IdRef="Sequence_98">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                  <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="入力テーブル　input&#xA;出力テーブル  output&#xA;出力テーブルに　登録用の空のレコードを一行追加をする&#xA;追加したテーブルの行番号を取得する&#xA;&#xA;*)dataTableとシート名を合わせる" DisplayName="登録用のデータを追加する(Excel Application Scope)" sap:VirtualizedContainerService.HintSize="732,200.8" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_13" Visible="False" WorkbookPath="C:\Users\USER\Documents\Book1.xlsx">
-                                    <ui:ExcelApplicationScope.Body>
-                                      <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                        <ActivityAction.Argument>
-                                          <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                        </ActivityAction.Argument>
-                                        <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416.8,468" sap2010:WorkflowViewState.IdRef="Sequence_92">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <Sequence DisplayName="データテーブルへの読み込み（Do）" sap:VirtualizedContainerService.HintSize="264,67.2" sap2010:WorkflowViewState.IdRef="Sequence_91">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                            <ui:ExcelReadRange AddHeaders="False" DataTable="[コピー先データ]" DisplayName="マップデータの読み込み(Read Range)" sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="ExcelReadRange_11" SheetName="[dic(&quot;出力シート&quot;)]">
-                                              <ui:ExcelReadRange.Range>
-                                                <InArgument x:TypeArguments="x:String">
-                                                  <Literal x:TypeArguments="x:String" Value="" />
-                                                </InArgument>
-                                              </ui:ExcelReadRange.Range>
-                                            </ui:ExcelReadRange>
-                                          </Sequence>
-                                          <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Activity AddDataTable&#xA;IN {}&#xA;OUT output&#xA;票のデータを入れる為のデータを追加" ArrayRow="[{}]" DataTable="[コピー先データ]" DisplayName="空のデータを一行設定　Add Data Row" sap:VirtualizedContainerService.HintSize="264,110.4" sap2010:WorkflowViewState.IdRef="AddDataRow_3">
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </ui:AddDataRow>
-                                          <Assign sap2010:Annotation.AnnotationText="IN output.rows.Count-1(レコード設定の場合　0からの為）&#xA;OUT col" DisplayName="現在のカウントを設定 Assign" sap:VirtualizedContainerService.HintSize="264,117.6" sap2010:WorkflowViewState.IdRef="Assign_69">
-                                            <Assign.To>
-                                              <OutArgument x:TypeArguments="x:Int32">[col]</OutArgument>
-                                            </Assign.To>
-                                            <Assign.Value>
-                                              <InArgument x:TypeArguments="x:Int32">[コピー先データ.rows.Count-1]</InArgument>
-                                            </Assign.Value>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </Assign>
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:ExcelApplicationScope.Body>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:ExcelApplicationScope>
-                                  <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="明細へ出力をする&#xA;&#xA;追加したレコードに　MAP定義の一行目の項目を&#xA;MAPに行目の項目に登録&#xA;例　A1(row(0)の値を　追加レコードの3番目(row(1))&#xA;&#xA;注意）Cint　にしないと登録時にエラーがでる&#xA;&#xA;IN  MAP マッピングテーブルを一行ずつ処理&#xA;IN　単票のデータ（エクセルからの取得）&#xA;OUT　明細のデータ　DataTable&#xA;&#xA;変換シートを元に文字を入れ替える&#xA;&#xA;出来たら目的のシートに登録&#xA;＊）キーを元にソートをする（必要であれば）&#xA;&#xA;IN　単票 エクセルファイル　flameworkのpDictionaryから取得する" DisplayName="明細へ出力をする Excel Application Scope" sap:VirtualizedContainerService.HintSize="732,2449.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_15" WorkbookPath="C:\Users\USER\Documents\Book1.xlsx">
-                                    <ui:ExcelApplicationScope.Body>
-                                      <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                        <ActivityAction.Argument>
-                                          <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                        </ActivityAction.Argument>
-                                        <Sequence DisplayName="単票データ取得開始 Sequence" sap:VirtualizedContainerService.HintSize="698.4,2054.4" sap2010:WorkflowViewState.IdRef="Sequence_97">
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                          <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="追加したレコードに　単票のデータを追加していく&#xA;IN　MAP{datatable}&#xA;OUT row{datarow}" DataTable="[MAP]" DisplayName="MAP分だけ処理(For Each Row)" sap:VirtualizedContainerService.HintSize="656.8,1542.4" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
-                                            <ui:ForEachRow.Body>
-                                              <ActivityAction x:TypeArguments="sd:DataRow">
-                                                <ActivityAction.Argument>
-                                                  <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                                                </ActivityAction.Argument>
-                                                <Sequence DisplayName="項目MAP処理 Sequence" sap:VirtualizedContainerService.HintSize="607.2,1336.8" sap2010:WorkflowViewState.IdRef="Sequence_95">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="565.6,1244" sap2010:WorkflowViewState.IdRef="Sequence_94">
-                                                    <Sequence.Variables>
-                                                      <Variable x:TypeArguments="sd:DataTable" Name="CHANGE" />
-                                                    </Sequence.Variables>
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                    <ui:ExcelReadCell sap2010:Annotation.AnnotationText="Excelからデータ取得　マップデータの内容でデータの取得&#xA;&#xA;IN Sheet1 取得するシート&#xA;IN row(0).ToString セルの値(A1など）&#xA;OUT val 単票のエクセルのデータ " Cell="[row(0).ToString]" DisplayName="登録データ取得 Read Cell" sap:VirtualizedContainerService.HintSize="524,148" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" PreserveFormat="True" SheetName="[入力ファイル]">
-                                                      <ui:ExcelReadCell.Result>
-                                                        <OutArgument x:TypeArguments="x:String">[登録データ]</OutArgument>
-                                                      </ui:ExcelReadCell.Result>
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </ui:ExcelReadCell>
-                                                    <ui:FilterDataTable sap2010:Annotation.AnnotationText="変換元から　変換先へのフィルター" DataTable="[変換テーブル]" DisplayName="文字比較 Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="524,91.2" sap2010:WorkflowViewState.IdRef="FilterDataTable_2" OutputDataTable="[CHANGE]" SelectColumnsMode="Keep">
-                                                      <ui:FilterDataTable.Filters>
-                                                        <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
-                                                          <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
-                                                            <ui:FilterOperationArgument.Column>
-                                                              <InArgument x:TypeArguments="x:String">["Column0"]</InArgument>
-                                                            </ui:FilterOperationArgument.Column>
-                                                            <ui:FilterOperationArgument.Operand>
-                                                              <InArgument x:TypeArguments="x:String">[登録データ]</InArgument>
-                                                            </ui:FilterOperationArgument.Operand>
-                                                          </ui:FilterOperationArgument>
-                                                        </scg:List>
-                                                      </ui:FilterDataTable.Filters>
-                                                      <ui:FilterDataTable.SelectColumns>
-                                                        <scg:List x:TypeArguments="InArgument" Capacity="4">
-                                                          <x:Null />
-                                                        </scg:List>
-                                                      </ui:FilterDataTable.SelectColumns>
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </ui:FilterDataTable>
-                                                    <If sap2010:Annotation.AnnotationText="検索にヒットした場合件数は０以上になる" Condition="[CHANGE.Rows.Count &gt; 0]" DisplayName="検索にヒットした場合(If)" sap:VirtualizedContainerService.HintSize="524,463.2" sap2010:WorkflowViewState.IdRef="If_4">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                      <If.Then>
-                                                        <Sequence DisplayName="データを入れ替える Sequence" sap:VirtualizedContainerService.HintSize="375.2,284" sap2010:WorkflowViewState.IdRef="Sequence_93">
-                                                          <sap:WorkflowViewStateService.ViewState>
-                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                            </scg:Dictionary>
-                                                          </sap:WorkflowViewStateService.ViewState>
-                                                          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" sap2010:Annotation.AnnotationText="登録したテーブルの確認" Buttons="Ok" DisplayName="文字比較　Message Box" sap:VirtualizedContainerService.HintSize="333.6,91.2" sap2010:WorkflowViewState.IdRef="MessageBox_21" Text="[CHANGE(0)(1).ToString]" TopMost="True">
-                                                            <sap:WorkflowViewStateService.ViewState>
-                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                              </scg:Dictionary>
-                                                            </sap:WorkflowViewStateService.ViewState>
-                                                          </ui:MessageBox>
-                                                          <Assign sap:VirtualizedContainerService.HintSize="333.6,60" sap2010:WorkflowViewState.IdRef="Assign_70">
-                                                            <Assign.To>
-                                                              <OutArgument x:TypeArguments="x:String">[登録データ]</OutArgument>
-                                                            </Assign.To>
-                                                            <Assign.Value>
-                                                              <InArgument x:TypeArguments="x:String">[CHANGE(0)(1).ToString]</InArgument>
-                                                            </Assign.Value>
-                                                          </Assign>
-                                                        </Sequence>
-                                                      </If.Then>
-                                                    </If>
-                                                    <Assign sap2010:Annotation.AnnotationText="最終行の　設定先へ値を保存&#xA;IN val エクセルから取得した値&#xA;OUT input(col)(Cint(row(1)-1))&#xA;&#xA;データテーブルの保存先　&#xA;&#xA;注）Cint で数値にしないとエラー" DisplayName="明細データの設定 Assign" sap:VirtualizedContainerService.HintSize="524,178.4" sap2010:WorkflowViewState.IdRef="Assign_71">
-                                                      <Assign.To>
-                                                        <OutArgument x:TypeArguments="x:Object">[コピー先データ(col)(Cint(row(1))-1)]</OutArgument>
-                                                      </Assign.To>
-                                                      <Assign.Value>
-                                                        <InArgument x:TypeArguments="x:Object">[登録データ]</InArgument>
-                                                      </Assign.Value>
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </Assign>
-                                                    <ui:OutputDataTable sap2010:Annotation.AnnotationText="ログで確認するために Output Data Tableで文字列で保存&#xA;&#xA;IN input&#xA;OUT　Log" DataTable="[コピー先データ]" DisplayName="LOGデータ出力 Output Data Table" sap:VirtualizedContainerService.HintSize="524,110.4" sap2010:WorkflowViewState.IdRef="OutputDataTable_2" Text="[log]">
-                                                      <sap:WorkflowViewStateService.ViewState>
-                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                        </scg:Dictionary>
-                                                      </sap:WorkflowViewStateService.ViewState>
-                                                    </ui:OutputDataTable>
-                                                  </Sequence>
-                                                </Sequence>
-                                              </ActivityAction>
-                                            </ui:ForEachRow.Body>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </ui:ForEachRow>
-                                          <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="設定したテーブルを一括して保存" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="656.8,379.2" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_14" Visible="False" WorkbookPath="[出力ファイル]">
-                                            <ui:ExcelApplicationScope.Body>
-                                              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                                                <ActivityAction.Argument>
-                                                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                                                </ActivityAction.Argument>
-                                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,238.4" sap2010:WorkflowViewState.IdRef="Sequence_96">
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                  <ui:ExcelWriteRange AddHeaders="False" sap2010:Annotation.AnnotationText="明細に値の設定&#xA;IN output&#xA;OUT Sheet2" DataTable="[コピー先データ]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="333.6,145.6" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_3" SheetName="[出力シート]" StartingCell="[dic(&quot;出力シート位置&quot;)]">
-                                                    <sap:WorkflowViewStateService.ViewState>
-                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                      </scg:Dictionary>
-                                                    </sap:WorkflowViewStateService.ViewState>
-                                                  </ui:ExcelWriteRange>
-                                                </Sequence>
-                                              </ActivityAction>
-                                            </ui:ExcelApplicationScope.Body>
-                                            <sap:WorkflowViewStateService.ViewState>
-                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                              </scg:Dictionary>
-                                            </sap:WorkflowViewStateService.ViewState>
-                                          </ui:ExcelApplicationScope>
-                                        </Sequence>
-                                      </ActivityAction>
-                                    </ui:ExcelApplicationScope.Body>
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                  </ui:ExcelApplicationScope>
-                                </Sequence>
-                                <FlowStep.Next>
-                                  <FlowStep x:Name="__ReferenceID0">
-                                    <sap:WorkflowViewStateService.ViewState>
-                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <av:Point x:Key="ShapeLocation">260,1296.4</av:Point>
-                                        <av:Size x:Key="ShapeSize">200,67.2</av:Size>
-                                      </scg:Dictionary>
-                                    </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence DisplayName="T005_ファイルの移動 Sequence" sap:VirtualizedContainerService.HintSize="200,67.2" sap2010:WorkflowViewState.IdRef="Sequence_69">
-                                      <sap:WorkflowViewStateService.ViewState>
-                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                        </scg:Dictionary>
-                                      </sap:WorkflowViewStateService.ViewState>
-                                    </Sequence>
-                                  </FlowStep>
-                                </FlowStep.Next>
-                              </FlowStep>
-                            </FlowStep.Next>
-                          </FlowStep>
-                          <FlowStep x:Key="3" x:Name="__ReferenceID10">
+                          <FlowStep x:Key="3" x:Name="__ReferenceID8">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:Point x:Key="ShapeLocation">260,1017.6</av:Point>
-                                <av:Size x:Key="ShapeSize">200,124.8</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">360,1142.4 360,1296.4</av:PointCollection>
+                                <av:Size x:Key="ShapeSize">200,155.2</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">360,1172.8 360,1296.4</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="ＩＤがある場合は更新&#xA;ＩＤがない場合は登録&#xA;" DisplayName="T001_データの転記 マップ2 Sequence" sap:VirtualizedContainerService.HintSize="200,124.8" sap2010:WorkflowViewState.IdRef="Sequence_135">
+                            <Sequence sap2010:Annotation.AnnotationText="明細から単票へ登録&#xD;&#xA;入力タイプ 3&#xD;&#xA;ＩＤがある場合は更新&#xA;ＩＤがない場合は登録&#xA;" DisplayName="T001_データの転記 マップ2 Sequence" sap:VirtualizedContainerService.HintSize="999.2,3716.8" sap2010:WorkflowViewState.IdRef="Sequence_135">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1977,7 +1470,7 @@
                                                           <OutArgument x:TypeArguments="x:Int32">[登録する元の位置]</OutArgument>
                                                         </Assign.To>
                                                         <Assign.Value>
-                                                          <InArgument x:TypeArguments="x:Int32">[Cint(row(2))]</InArgument>
+                                                          <InArgument x:TypeArguments="x:Int32">[Cint(row(2))-1]</InArgument>
                                                         </Assign.Value>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1990,7 +1483,7 @@
                                                           <OutArgument x:TypeArguments="x:Int32">[登録する列の位置]</OutArgument>
                                                         </Assign.To>
                                                         <Assign.Value>
-                                                          <InArgument x:TypeArguments="x:Int32">[Cint(row(3))]</InArgument>
+                                                          <InArgument x:TypeArguments="x:Int32">[Cint(row(3))-1]</InArgument>
                                                         </Assign.Value>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2003,7 +1496,7 @@
                                                           <OutArgument x:TypeArguments="x:Int32">[登録する行の位置]</OutArgument>
                                                         </Assign.To>
                                                         <Assign.Value>
-                                                          <InArgument x:TypeArguments="x:Int32">[Cint(row(4))]</InArgument>
+                                                          <InArgument x:TypeArguments="x:Int32">[Cint(row(4))-1]</InArgument>
                                                         </Assign.Value>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2016,7 +1509,7 @@
                                                           <OutArgument x:TypeArguments="x:String">[登録する元のセル値]</OutArgument>
                                                         </Assign.To>
                                                         <Assign.Value>
-                                                          <InArgument x:TypeArguments="x:String">[rows(Cint(登録する元の位置)-1).ToString]</InArgument>
+                                                          <InArgument x:TypeArguments="x:String">[rows(Cint(登録する元の位置)).ToString]</InArgument>
                                                         </Assign.Value>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2039,7 +1532,7 @@
                                                                   <InArgument x:TypeArguments="x:String">["Column0"]</InArgument>
                                                                 </ui:FilterOperationArgument.Column>
                                                                 <ui:FilterOperationArgument.Operand>
-                                                                  <InArgument x:TypeArguments="x:Object">[rows(Cint(登録する元の位置)-1)]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:Object">[rows(Cint(登録する元の位置))]</InArgument>
                                                                 </ui:FilterOperationArgument.Operand>
                                                               </ui:FilterOperationArgument>
                                                             </scg:List>
@@ -2103,7 +1596,7 @@
                                                       </Sequence>
                                                       <Assign sap2010:Annotation.AnnotationText="登録先 copyDt(count-1)(Cint(B)-1)&#xA;登録元 rows(Cint(A)-1)" DisplayName="転記先レコードへ追加 Assign" sap:VirtualizedContainerService.HintSize="655.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_97">
                                                         <Assign.To>
-                                                          <OutArgument x:TypeArguments="x:Object">[コピー先データテーブル(登録する行の位置-1)(Cint(登録する列の位置)-1)]</OutArgument>
+                                                          <OutArgument x:TypeArguments="x:Object">[コピー先データテーブル(登録する行の位置)(Cint(登録する列の位置))]</OutArgument>
                                                         </Assign.To>
                                                         <Assign.Value>
                                                           <InArgument x:TypeArguments="x:Object">[登録データ]</InArgument>
@@ -2216,25 +1709,39 @@
                               </TryCatch>
                             </Sequence>
                             <FlowStep.Next>
-                              <x:Reference>__ReferenceID0</x:Reference>
+                              <FlowStep x:Name="__ReferenceID0">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">260,1296.4</av:Point>
+                                    <av:Size x:Key="ShapeSize">200,67.2</av:Size>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Sequence DisplayName="T005_ファイルの移動 Sequence" sap:VirtualizedContainerService.HintSize="200,67.2" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </Sequence>
+                              </FlowStep>
                             </FlowStep.Next>
                           </FlowStep>
-                          <FlowStep x:Key="1" x:Name="__ReferenceID11">
+                          <FlowStep x:Key="1" x:Name="__ReferenceID9">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:Point x:Key="ShapeLocation">500,1017.6</av:Point>
-                                <av:Size x:Key="ShapeSize">200,124.8</av:Size>
-                                <av:PointCollection x:Key="ConnectorLocation">600,1142.4 600,1330 460,1330</av:PointCollection>
+                                <av:Point x:Key="ShapeLocation">540,1017.6</av:Point>
+                                <av:Size x:Key="ShapeSize">200,155.2</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">640,1172.8 640,1330 460,1330</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Sequence sap2010:Annotation.AnnotationText="ＩＤがある場合は更新&#xA;ＩＤがない場合は登録&#xA;" DisplayName="T001_データの転記 マップ2 Sequence" sap:VirtualizedContainerService.HintSize="200,124.8" sap2010:WorkflowViewState.IdRef="Sequence_148">
+                            <Sequence sap2010:Annotation.AnnotationText="単票から明細へ登録&#xD;&#xA;入力タイプ１&#xD;&#xA;ＩＤがある場合は更新&#xA;ＩＤがない場合は登録&#xA;" DisplayName="T001_データの転記 マップ2 Sequence" sap:VirtualizedContainerService.HintSize="200,155.2" sap2010:WorkflowViewState.IdRef="Sequence_148">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="908,3253.6" sap2010:WorkflowViewState.IdRef="TryCatch_4">
+                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="908,3257.6" sap2010:WorkflowViewState.IdRef="TryCatch_4">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2242,7 +1749,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <Sequence DisplayName="シートに転記をして追加 Sequence" sap:VirtualizedContainerService.HintSize="871.2,2814.4" sap2010:WorkflowViewState.IdRef="Sequence_147">
+                                  <Sequence DisplayName="シートに転記をして追加 Sequence" sap:VirtualizedContainerService.HintSize="871.2,2818.4" sap2010:WorkflowViewState.IdRef="Sequence_147">
                                     <Sequence.Variables>
                                       <Variable x:TypeArguments="sd:DataTable" Name="コピー先データテーブル" />
                                       <Variable x:TypeArguments="ui:GenericValue" Name="i" />
@@ -2284,7 +1791,7 @@
                                         <InArgument x:TypeArguments="sd:DataTable">[コピー先データ]</InArgument>
                                       </Assign.Value>
                                     </Assign>
-                                    <Sequence DisplayName="登録　更新処理 Sequence" sap:VirtualizedContainerService.HintSize="829.6,1772" sap2010:WorkflowViewState.IdRef="Sequence_140">
+                                    <Sequence DisplayName="登録　更新処理 Sequence" sap:VirtualizedContainerService.HintSize="829.6,1776" sap2010:WorkflowViewState.IdRef="Sequence_140">
                                       <Sequence.Variables>
                                         <Variable x:TypeArguments="x:Int32" Name="検索したセル列の番号" />
                                         <Variable x:TypeArguments="x:String" Name="検索したセルの値" />
@@ -2295,19 +1802,19 @@
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Sequence sap:VirtualizedContainerService.HintSize="788,1679.2" sap2010:WorkflowViewState.IdRef="Sequence_139">
+                                      <Sequence sap:VirtualizedContainerService.HintSize="788,1683.2" sap2010:WorkflowViewState.IdRef="Sequence_139">
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="転記データを読み込み　登録元から登録先へ追加" DataTable="[MAP]" DisplayName="転記部分 For Each Row" sap:VirtualizedContainerService.HintSize="746.4,1586.4" sap2010:WorkflowViewState.IdRef="ForEachRow_12">
+                                        <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="転記データを読み込み　登録元から登録先へ追加" DataTable="[MAP]" DisplayName="転記部分 For Each Row" sap:VirtualizedContainerService.HintSize="746.4,1590.4" sap2010:WorkflowViewState.IdRef="ForEachRow_12">
                                           <ui:ForEachRow.Body>
                                             <ActivityAction x:TypeArguments="sd:DataRow">
                                               <ActivityAction.Argument>
                                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
                                               </ActivityAction.Argument>
-                                              <Sequence DisplayName="マッピングシートの内容でデータの転記 Body" sap:VirtualizedContainerService.HintSize="696.8,1407.2" sap2010:WorkflowViewState.IdRef="Sequence_138">
+                                              <Sequence DisplayName="マッピングシートの内容でデータの転記 Body" sap:VirtualizedContainerService.HintSize="696.8,1411.2" sap2010:WorkflowViewState.IdRef="Sequence_138">
                                                 <Sequence.Variables>
                                                   <Variable x:TypeArguments="x:Int32" Name="登録する元の位置" />
                                                   <Variable x:TypeArguments="x:Int32" Name="登録する後の位置" />
@@ -2320,25 +1827,12 @@
                                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <Assign sap2010:Annotation.AnnotationText="登録元列の取得&#xA;単票の場合はセルの価を設定" DisplayName="登録元セルの位置データ Assign" sap:VirtualizedContainerService.HintSize="655.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_101">
+                                                <Assign sap2010:Annotation.AnnotationText="登録元列の取得&#xA;単票の場合はセルの価を設定" DisplayName="登録元列セルの位置データ Assign" sap:VirtualizedContainerService.HintSize="655.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_101">
                                                   <Assign.To>
                                                     <OutArgument x:TypeArguments="x:Int32">[登録する元の位置]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:Int32">[Cint(row(2))]</InArgument>
-                                                  </Assign.Value>
-                                                  <sap:WorkflowViewStateService.ViewState>
-                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                                    </scg:Dictionary>
-                                                  </sap:WorkflowViewStateService.ViewState>
-                                                </Assign>
-                                                <Assign sap2010:Annotation.AnnotationText="登録先列の取得&#xA;単票の場合はセルの価を設定&#xA;列番号" DisplayName="登録先セルの列位置データ Assign" sap:VirtualizedContainerService.HintSize="655.2,117.6" sap2010:WorkflowViewState.IdRef="Assign_102">
-                                                  <Assign.To>
-                                                    <OutArgument x:TypeArguments="x:Int32">[登録する列の位置]</OutArgument>
-                                                  </Assign.To>
-                                                  <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:Int32">[Cint(row(3))]</InArgument>
+                                                    <InArgument x:TypeArguments="x:Int32">[Cint(row(2))-1]</InArgument>
                                                   </Assign.Value>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2351,7 +1845,7 @@
                                                     <OutArgument x:TypeArguments="x:Int32">[登録する行の位置]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:Int32">[Cint(row(4))]</InArgument>
+                                                    <InArgument x:TypeArguments="x:Int32">[Cint(row(4))-1]</InArgument>
                                                   </Assign.Value>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2359,12 +1853,25 @@
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </Assign>
-                                                <Assign sap2010:Annotation.AnnotationText="登録先列の取得&#xA;単票の場合はそのままセルの値を挿入" DisplayName="登録元データ Assign" sap:VirtualizedContainerService.HintSize="655.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_104">
+                                                <Assign sap2010:Annotation.AnnotationText="" DisplayName="登録先セルの行位置データ Assign" sap:VirtualizedContainerService.HintSize="655.2,91.2" sap2010:WorkflowViewState.IdRef="Assign_102">
+                                                  <Assign.To>
+                                                    <OutArgument x:TypeArguments="x:Int32">[登録する列の位置]</OutArgument>
+                                                  </Assign.To>
+                                                  <Assign.Value>
+                                                    <InArgument x:TypeArguments="x:Int32">[Cint(row(2))-1]</InArgument>
+                                                  </Assign.Value>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                </Assign>
+                                                <Assign sap2010:Annotation.AnnotationText="登録先列の取得&#xA;単票の場合はそのままセルの値を挿入&#xD;&#xA;input(登録する元の位置)(登録する元の位置).ToString" DisplayName="登録元データ Assign" sap:VirtualizedContainerService.HintSize="655.2,132.8" sap2010:WorkflowViewState.IdRef="Assign_104">
                                                   <Assign.To>
                                                     <OutArgument x:TypeArguments="x:String">[登録する元のセル値]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
-                                                    <InArgument x:TypeArguments="x:String">[input(登録する元の位置)(登録する元の位置).ToString]</InArgument>
+                                                    <InArgument x:TypeArguments="x:String">[input(登録する行の位置)(登録する元の位置).ToString]</InArgument>
                                                   </Assign.Value>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -2451,7 +1958,7 @@
                                                 </Sequence>
                                                 <Assign sap2010:Annotation.AnnotationText="登録先 copyDt(count-1)(Cint(B)-1)&#xA;登録元 rows(Cint(A)-1)" DisplayName="転記先レコードへ追加 Assign" sap:VirtualizedContainerService.HintSize="655.2,102.4" sap2010:WorkflowViewState.IdRef="Assign_107">
                                                   <Assign.To>
-                                                    <OutArgument x:TypeArguments="x:Object">[コピー先データテーブル(Cint(転記シートID))(Cint(登録する列の位置)-1)]</OutArgument>
+                                                    <OutArgument x:TypeArguments="x:Object">[コピー先データテーブル(Cint(転記シートID))(Cint(登録する列の位置))]</OutArgument>
                                                   </Assign.To>
                                                   <Assign.Value>
                                                     <InArgument x:TypeArguments="x:Object">[登録データ]</InArgument>
@@ -2548,7 +2055,7 @@
                         </FlowSwitch>
                       </FlowDecision.True>
                       <FlowDecision.False>
-                        <FlowStep x:Name="__ReferenceID9">
+                        <FlowStep x:Name="__ReferenceID7">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <av:Point x:Key="ShapeLocation">500,689</av:Point>
@@ -2571,164 +2078,9 @@
               </FlowStep.Next>
             </FlowStep>
             <x:Reference>__ReferenceID1</x:Reference>
-            <FlowStep>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">760,1010</av:Point>
-                  <av:Size x:Key="ShapeSize">200,140</av:Size>
-                  <av:PointCollection x:Key="ConnectorLocation">860,1150 860,1330 460,1330</av:PointCollection>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:ExcelApplicationScope Password="{x:Null}" sap2010:Annotation.AnnotationText="指定されたＩＤの番号のデータを単票シートに登録をする&#xD;&#xA;&#xD;&#xA;マップシート２&#xD;&#xA;マップシート３" DisplayName="T004_IDを元に転記データから単票に転記　Excel Application Scope" sap:VirtualizedContainerService.HintSize="200,140" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_6" Visible="False" Workbook="[exl]" WorkbookPath="C:\Users\USER\Documents\Book1.xlsx">
-                <ui:ExcelApplicationScope.Body>
-                  <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-                    <ActivityAction.Argument>
-                      <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-                    </ActivityAction.Argument>
-                    <Sequence sap:VirtualizedContainerService.HintSize="508,1366.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
-                      <sap:WorkflowViewStateService.ViewState>
-                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        </scg:Dictionary>
-                      </sap:WorkflowViewStateService.ViewState>
-                      <ui:ForEachRow CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="対応項目数だけ転記をする&#xA;ーーーー&#xA;|row(0)　MAP&#xA;-------   --------------------- -----------------------------&#xA;              row(0)                     MAP(1)&#xA;             ---------------------&#xA;                                            -----------------------------&#xA;" DataTable="[MAP]" DisplayName="For Each Row" sap:VirtualizedContainerService.HintSize="466.4,1273.6" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-                        <ui:ForEachRow.Body>
-                          <ActivityAction x:TypeArguments="sd:DataRow">
-                            <ActivityAction.Argument>
-                              <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
-                            </ActivityAction.Argument>
-                            <Sequence sap2010:Annotation.AnnotationText="row(0) 単票用位置　&#xA;row(1) 明細用位置&#xA;&#xA;単票の位置を元に明細に登録&#xA;明細の位置を元に単票に登録" sap:VirtualizedContainerService.HintSize="416.8,992" sap2010:WorkflowViewState.IdRef="Sequence_21">
-                              <Sequence.Variables>
-                                <Variable x:TypeArguments="ui:GenericValue" Name="単票" />
-                                <Variable x:TypeArguments="ui:GenericValue" Name="挿入" />
-                                <Variable x:TypeArguments="x:String" Name="明細番号" />
-                                <Variable x:TypeArguments="ui:GenericValue" Name="セル番号" />
-                              </Sequence.Variables>
-                              <sap:WorkflowViewStateService.ViewState>
-                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                </scg:Dictionary>
-                              </sap:WorkflowViewStateService.ViewState>
-                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="単票のセルの場所 Message Box" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[row(0).ToString+&quot;取得するセル&quot;]" TopMost="True" />
-                              <Assign DisplayName="処理する転記データの行番号 Assign" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="Assign_8">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="ui:GenericValue">[セル番号]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="ui:GenericValue">[row(0).ToString]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                              <Assign DisplayName="単票へ挿入する列番号( Assign)" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="Assign_5">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[明細番号]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[row(1).ToString]</InArgument>
-                                </Assign.Value>
-                              </Assign>
-                              <Assign sap2010:Annotation.AnnotationText="アウトプットの　row(1) MAPデータの取得&#xA;0行目の　（場所）&#xA;IN output(明細位置)(Cint(明細番号)).ToString&#xA;OUT val " DisplayName="挿入するデータの取得 Assign" sap:VirtualizedContainerService.HintSize="375.2,148" sap2010:WorkflowViewState.IdRef="Assign_3">
-                                <Assign.To>
-                                  <OutArgument x:TypeArguments="x:String">[登録データ]</OutArgument>
-                                </Assign.To>
-                                <Assign.Value>
-                                  <InArgument x:TypeArguments="x:String">[コピー先データ(明細位置)(Cint(明細番号)).ToString]</InArgument>
-                                </Assign.Value>
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                              </Assign>
-                              <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="単票のセルの場所 Message Box" sap:VirtualizedContainerService.HintSize="375.2,60" sap2010:WorkflowViewState.IdRef="MessageBox_15" Text="[登録データ]" TopMost="True" />
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="375.2,223.2" sap2010:WorkflowViewState.IdRef="Sequence_20">
-                                <sap:WorkflowViewStateService.ViewState>
-                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                                  </scg:Dictionary>
-                                </sap:WorkflowViewStateService.ViewState>
-                                <ui:ExcelWriteCell sap2010:Annotation.AnnotationText="IN Sheet1 セル番号&#xA;OUT val" Cell="[セル番号]" DisplayName="単票に記載 Write Cell" sap:VirtualizedContainerService.HintSize="333.6,130.4" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="[dic(&quot;入力シート&quot;)]" Text="[登録データ]">
-                                  <sap:WorkflowViewStateService.ViewState>
-                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                    </scg:Dictionary>
-                                  </sap:WorkflowViewStateService.ViewState>
-                                </ui:ExcelWriteCell>
-                              </Sequence>
-                            </Sequence>
-                          </ActivityAction>
-                        </ui:ForEachRow.Body>
-                        <sap:WorkflowViewStateService.ViewState>
-                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                          </scg:Dictionary>
-                        </sap:WorkflowViewStateService.ViewState>
-                      </ui:ForEachRow>
-                    </Sequence>
-                  </ActivityAction>
-                </ui:ExcelApplicationScope.Body>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:ExcelApplicationScope>
-              <FlowStep.Next>
-                <x:Reference>__ReferenceID0</x:Reference>
-              </FlowStep.Next>
-            </FlowStep>
-            <FlowStep>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">538,520</av:Point>
-                  <av:Size x:Key="ShapeSize">264,60</av:Size>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="264,60" sap2010:WorkflowViewState.IdRef="Assign_37">
-                <Assign.To>
-                  <OutArgument x:TypeArguments="x:Boolean">[files]</OutArgument>
-                </Assign.To>
-                <Assign.Value>
-                  <InArgument x:TypeArguments="x:Boolean">[System.IO.Directory.GetFiles("C:\Uipath", "*.xlsx", System.IO.SearchOption.AllDirectories).Where(Function(file) file.Contains("test2")).ToArray]</InArgument>
-                </Assign.Value>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </Assign>
-            </FlowStep>
-            <x:Reference>__ReferenceID2</x:Reference>
             <x:Reference>__ReferenceID0</x:Reference>
-            <x:Reference>__ReferenceID3</x:Reference>
-            <FlowStep>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <av:Point x:Key="ShapeLocation">740,1177.6</av:Point>
-                  <av:Size x:Key="ShapeSize">200,124.8</av:Size>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-              <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="マップシート５&#xD;&#xA;&#xD;&#xA;vlookupで無ければ追加&#xA;-1の場合はADDして追加" DisplayName="T003_IDの値に更新 Sequence4 work Invoke flow" sap:VirtualizedContainerService.HintSize="200,124.8" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="core/シートに転記をして追加Sequence4.xaml">
-                <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="sd:DataTable" x:Key="MAP">[MAP]</InArgument>
-                  <InArgument x:TypeArguments="sd:DataTable" x:Key="output">[コピー先データ]</InArgument>
-                  <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="dic">[dic]</InArgument>
-                  <OutArgument x:TypeArguments="x:Int32" x:Key="count">[コピーするエクセルの列]</OutArgument>
-                </ui:InvokeWorkflowFile.Arguments>
-                <sap:WorkflowViewStateService.ViewState>
-                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                  </scg:Dictionary>
-                </sap:WorkflowViewStateService.ViewState>
-              </ui:InvokeWorkflowFile>
-            </FlowStep>
-            <FlowStep x:Name="__ReferenceID12">
+            <x:Reference>__ReferenceID2</x:Reference>
+            <FlowStep x:Name="__ReferenceID10">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <av:Point x:Key="ShapeLocation">250,108.8</av:Point>
@@ -2745,7 +2097,7 @@
                 </sap:WorkflowViewStateService.ViewState>
               </ui:GetSecureCredential>
               <FlowStep.Next>
-                <FlowStep x:Name="__ReferenceID7">
+                <FlowStep x:Name="__ReferenceID5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <av:Point x:Key="ShapeLocation">250,196.4</av:Point>
@@ -2821,18 +2173,17 @@
                     </Sequence>
                   </Sequence>
                   <FlowStep.Next>
-                    <x:Reference>__ReferenceID4</x:Reference>
+                    <x:Reference>__ReferenceID3</x:Reference>
                   </FlowStep.Next>
                 </FlowStep>
               </FlowStep.Next>
             </FlowStep>
+            <x:Reference>__ReferenceID4</x:Reference>
             <x:Reference>__ReferenceID5</x:Reference>
             <x:Reference>__ReferenceID6</x:Reference>
             <x:Reference>__ReferenceID7</x:Reference>
             <x:Reference>__ReferenceID8</x:Reference>
             <x:Reference>__ReferenceID9</x:Reference>
-            <x:Reference>__ReferenceID10</x:Reference>
-            <x:Reference>__ReferenceID11</x:Reference>
           </Flowchart>
         </Sequence>
       </TryCatch.Try>
