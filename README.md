@@ -49,3 +49,5 @@
 3. Implement GetTransactionData and SetTransactionStatus or use ./Framework versions for Orchestrator queues
 4. Implement ProcessTransaction workflow and any invoked others
 =CELL("col",INDIRECT(A1&"1"))
+A	A	1	1	1
+
