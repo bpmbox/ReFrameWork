@@ -1,5 +1,6 @@
 ### Documentation is included in the Documentation folder ###
-
+dt.Select("").CopyToDataTable.DefaultView.ToTable(False,lost.ToArray)
+list = new List(Of String)
 [ReFrameWork Documentation](https://github.com/UiPath/ReFrameWork/blob/master/Documentation/REFramework%20documentation.pdf)
 
 ### ReFrameWork Template ###
